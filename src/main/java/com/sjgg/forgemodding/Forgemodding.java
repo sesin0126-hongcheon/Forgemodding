@@ -35,8 +35,14 @@ public class Forgemodding {
 
     // Define mod id in a common place for everything to reference
     public static final String MODID = "forgemodding";
+
+    // 로거(기록, 건들지 말도록..) ------------------------------------------------------------------------
+
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
+
+    // 블록 & 아이템 추가------------------------------------------------------------------------
+
     // Create a Deferred Register to hold Blocks which will all be registered under the "forgemodding" namespace
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
     // Create a Deferred Register to hold Items which will all be registered under the "forgemodding" namespace
@@ -49,13 +55,19 @@ public class Forgemodding {
     // Creates a new BlockItem with the id "forgemodding:example_block", combining the namespace and path
     public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register("example_block", () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties()));
 
+    // 음식 추가 ------------------------------------------------------------------------
+
     // Creates a new food item with the id "forgemodding:example_id", nutrition 1 and saturation 2
     public static final RegistryObject<Item> EXAMPLE_ITEM = ITEMS.register("example_item", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().alwaysEat().nutrition(1).saturationMod(2f).build())));
+
+    // 아이템 탭 ------------------------------------------------------------------------
 
     // Creates a creative tab with the id "forgemodding:example_tab" for the example item, that is placed after the combat tab
     public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder().withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> EXAMPLE_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
         output.accept(EXAMPLE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
     }).build());
+
+    // 메인 ------------------------------------------------------------------------
 
     public Forgemodding() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -97,12 +109,16 @@ public class Forgemodding {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) event.accept(EXAMPLE_BLOCK_ITEM);
     }
 
+    // 서버 (사용 안할 예정)------------------------------------------------------------------------
+
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
+
+    // 클라이언트 ------------------------------------------------------------------------
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
