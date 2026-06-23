@@ -1,0 +1,85 @@
+[246월2026 00:00:00.650] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: 스폰 영역 준비 중: 89%
+[246월2026 00:00:00.850] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: 스폰 영역 준비 중: 91%
+[246월2026 00:00:01.354] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: 스폰 영역 준비 중: 97%
+[246월2026 00:00:01.421] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
+[246월2026 00:00:01.423] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 13576 ms
+[246월2026 00:00:01.480] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 12, from 10
+[246월2026 00:00:01.482] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
+[246월2026 00:00:01.522] [Render thread/WARN] [io.netty.util.internal.SystemPropertyUtil/]: Unable to parse the boolean system property 'java.net.preferIPv6Addresses':system - using the default value: false
+[246월2026 00:00:01.990] [Netty Local Client IO #0/INFO] [net.minecraftforge.network.NetworkHooks/]: Connected to a modded server.
+[246월2026 00:00:02.021] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:29bc9c50] logged in with entity id 292 at (-7.5, 72.0, -5.5)
+[246월2026 00:00:02.042] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev이(가) 게임에 참여했습니다
+[246월2026 00:00:02.104] [Render thread/INFO] [mezz.jei.forge.startup.StartEventObserver/]: JEI StartEventObserver received class net.minecraftforge.client.event.ClientPlayerNetworkEvent$LoggingIn
+[246월2026 00:00:02.104] [Render thread/INFO] [mezz.jei.forge.startup.StartEventObserver/]: JEI StartEventObserver transitioning state from DISABLED to ENABLED
+[246월2026 00:00:02.183] [Render thread/INFO] [mezz.jei.forge.startup.StartEventObserver/]: JEI StartEventObserver received class net.minecraftforge.client.event.RecipesUpdatedEvent
+[246월2026 00:00:02.191] [Render thread/INFO] [mezz.jei.forge.startup.StartEventObserver/]: JEI StartEventObserver received class net.minecraftforge.event.TagsUpdatedEvent
+[246월2026 00:00:02.191] [Render thread/INFO] [mezz.jei.forge.startup.StartEventObserver/]: JEI StartEventObserver transitioning state from ENABLED to JEI_STARTED
+[246월2026 00:00:02.192] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Starting JEI...
+[246월2026 00:00:02.195] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering item subtypes...
+[246월2026 00:00:02.198] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering item subtypes took 2.404 ms
+[246월2026 00:00:02.198] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering fluid subtypes...
+[246월2026 00:00:02.199] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering fluid subtypes took 846.7 μs
+[246월2026 00:00:02.200] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering ingredients...
+[246월2026 00:00:02.224] [Render thread/WARN] [mezz.jei.library.plugins.vanilla.ingredients.ItemStackListFactory/]: Item Group has no display items and no search tab display items. Items from this group will be missing from the JEI ingredient list. 관리자 도구
+[246월2026 00:00:02.232] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering ingredients: jei:minecraft took 31.55 milliseconds
+[246월2026 00:00:02.232] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering ingredients took 31.98 ms
+[246월2026 00:00:02.237] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering categories...
+[246월2026 00:00:02.245] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering categories took 7.687 ms
+[246월2026 00:00:02.245] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering vanilla category extensions...
+[246월2026 00:00:02.246] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering vanilla category extensions took 1.263 ms
+[246월2026 00:00:02.247] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipe catalysts...
+[246월2026 00:00:02.248] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipe catalysts took 429.6 μs
+[246월2026 00:00:02.248] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering advanced plugins...
+[246월2026 00:00:02.248] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering advanced plugins took 200.8 μs
+[246월2026 00:00:02.248] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building recipe registry...
+[246월2026 00:00:02.253] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building recipe registry took 4.945 ms
+[246월2026 00:00:02.254] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipes...
+[246월2026 00:00:02.388] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering recipes: jei:minecraft took 133.9 milliseconds
+[246월2026 00:00:02.389] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipes took 134.4 ms
+[246월2026 00:00:02.391] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipes transfer handlers...
+[246월2026 00:00:02.393] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipes transfer handlers took 1.962 ms
+[246월2026 00:00:02.399] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building runtime...
+[246월2026 00:00:02.402] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering gui handlers...
+[246월2026 00:00:02.408] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering gui handlers took 6.346 ms
+[246월2026 00:00:02.410] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering Runtime...
+[246월2026 00:00:02.411] [Render thread/INFO] [mezz.jei.gui.startup.JeiGuiStarter/]: Starting JEI GUI
+[246월2026 00:00:02.411] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building ingredient list...
+[246월2026 00:00:02.413] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building ingredient list took 1.800 ms
+[246월2026 00:00:02.413] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building ingredient filter...
+[246월2026 00:00:02.427] [Render thread/INFO] [mezz.jei.gui.ingredients.IngredientFilter/]: Adding 1559 ingredients
+[246월2026 00:00:02.539] [Render thread/INFO] [mezz.jei.gui.ingredients.IngredientFilter/]: Added 1559/1559 ingredients
+[246월2026 00:00:02.539] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building ingredient filter took 125.7 ms
+[246월2026 00:00:02.583] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering Runtime: jei:forge_gui took 172.6 milliseconds
+[246월2026 00:00:02.583] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering Runtime took 173.2 ms
+[246월2026 00:00:02.583] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building runtime took 184.2 ms
+[246월2026 00:00:02.584] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Sending Runtime...
+[246월2026 00:00:02.584] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Sending Runtime took 351.5 μs
+[246월2026 00:00:02.584] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Starting JEI took 392.5 ms
+[246월2026 00:00:02.800] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 2 advancements
+[246월2026 00:00:13.084] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 5 advancements
+[246월2026 00:00:20.782] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 16 advancements
+[246월2026 00:00:22.375] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 19 advancements
+[246월2026 00:03:40.769] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[246월2026 00:03:40.779] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[새로운 세계]'/minecraft:overworld
+[246월2026 00:03:40.793] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[새로운 세계]'/minecraft:the_end
+[246월2026 00:03:40.794] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[새로운 세계]'/minecraft:the_nether
+[246월2026 00:03:41.268] [Render thread/INFO] [mezz.jei.forge.startup.StartEventObserver/]: JEI StartEventObserver received class net.minecraftforge.client.event.ClientPlayerNetworkEvent$LoggingOut
+[246월2026 00:03:41.268] [Render thread/INFO] [mezz.jei.forge.startup.StartEventObserver/]: JEI StartEventObserver transitioning state from JEI_STARTED to DISABLED
+[246월2026 00:03:41.268] [Render thread/INFO] [mezz.jei.library.startup.JeiStarter/]: Stopping JEI
+[246월2026 00:03:41.268] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Sending Runtime Unavailable...
+[246월2026 00:03:41.268] [Render thread/INFO] [mezz.jei.forge.plugins.forge.ForgeGuiPlugin/]: Stopping JEI GUI
+[246월2026 00:03:41.270] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Sending Runtime Unavailable took 1.289 ms
+[246월2026 00:03:41.324] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: 연결 끊김
+[246월2026 00:03:41.324] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev이(가) 게임을 떠났습니다
+[246월2026 00:03:41.328] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Stopping singleplayer server as player logged out
+[246월2026 00:03:41.378] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[246월2026 00:03:41.379] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[246월2026 00:03:41.379] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[246월2026 00:03:41.853] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[새로운 세계]'/minecraft:overworld
+[246월2026 00:03:42.002] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[새로운 세계]'/minecraft:the_end
+[246월2026 00:03:42.003] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[새로운 세계]'/minecraft:the_nether
+[246월2026 00:03:42.016] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (새로운 세계): All chunks are saved
+[246월2026 00:03:42.016] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[246월2026 00:03:42.016] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[246월2026 00:03:42.016] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[246월2026 00:03:43.252] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!
