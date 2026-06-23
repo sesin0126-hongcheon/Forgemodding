@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.sjgg.forgemodding.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.sjgg.forgemodding.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.sjgg.forgemodding.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.sjgg.forgemodding.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/forgemodding.main.iml" filepath="$PROJECT_DIR$/.idea/modules/forgemodding.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/forgemodding.test.iml" filepath="$PROJECT_DIR$/.idea/modules/forgemodding.test.iml" />
     </modules>
