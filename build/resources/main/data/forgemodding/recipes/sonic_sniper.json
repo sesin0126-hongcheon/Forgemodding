@@ -3,20 +3,23 @@
   "category": "equipment",
   "pattern": [
     " SE",
-    " E ",
+    "IE ",
     "N  "
   ],
   "key": {
-  "N": {
-    "item": "minecraft:netherite_ingot"
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "E": {
+      "item": "minecraft:echo_shard"
+    },
+    "S": {
+      "item": "minecraft:spyglass"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
   },
-  "E": {
-    "item": "minecraft:echo_shard"
-  },
-  "S": {
-    "item": "minecraft:spyglass"
-  }
-},
   "result": {
     "item": "forgemodding:sonic_sniper",
     "count": 1

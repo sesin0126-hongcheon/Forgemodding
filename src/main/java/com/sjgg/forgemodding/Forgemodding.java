@@ -1,8 +1,10 @@
 package com.sjgg.forgemodding;
 
 import com.mojang.logging.LogUtils;
+import com.sjgg.forgemodding.entity.ModEntities;
 import com.sjgg.forgemodding.item.SonicCreativeModTabs;
 import com.sjgg.forgemodding.item.SonicItems;
+import com.sjgg.forgemodding.networks.ModMessages;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -27,6 +29,10 @@ public class Forgemodding {
         SonicCreativeModTabs.register(modEventBus);
 
         SonicItems.register(modEventBus);
+
+        ModMessages.register();
+
+        ModEntities.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

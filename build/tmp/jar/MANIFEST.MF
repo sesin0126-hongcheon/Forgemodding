@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Specification-Title: forgemodding
+Specification-Vendor: sesin & DodoBird
+Specification-Version: 1
+Implementation-Title: forgemodding
+Implementation-Version: 1.0-Pre
+Implementation-Vendor: sesin & DodoBird
+Implementation-Timestamp: 2026-06-29T22:41:17+0900
+
