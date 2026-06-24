@@ -1,3 +1,7 @@
 {
-  "item.forgemodding.sonic_gun": "Sonic gun"
+  "item.forgemodding.sonic_sniper": "Sonic Sniper",
+  "item.forgemodding.sonic_pistol": "Sonic Pistol",
+  "item.forgemodding.sonic_ar": "Sonic AR",
+
+  "creativetab.sonic_items": "Sonic Items"
 }
