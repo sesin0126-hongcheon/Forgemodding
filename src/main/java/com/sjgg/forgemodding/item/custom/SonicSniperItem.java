@@ -142,7 +142,8 @@ public class SonicSniperItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.literal("주파수: §b" + getFrequency(stack) + " Hz"));
-        tooltip.add(Component.literal("§e1초~5초 이상 충전 후 발사. (충전시간 비례 데미지 증가)"));
+        tooltip.add(Component.literal("§e[Shift + 숫자 1~9] 키를 눌러 빠른 주파수 변경 가능"));
+        tooltip.add(Component.literal("§e1초~5초 이상 충전 후 발사 (충전시간 비례 데미지 증가)"));
         super.appendHoverText(stack, level, tooltip, flag);
     }
 }

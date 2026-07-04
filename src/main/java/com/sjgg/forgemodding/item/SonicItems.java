@@ -1,6 +1,7 @@
 package com.sjgg.forgemodding.item;
 
 import com.sjgg.forgemodding.Forgemodding;
+import com.sjgg.forgemodding.item.custom.SonicPistolItem;
 import com.sjgg.forgemodding.item.custom.SonicSniperItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -15,7 +16,7 @@ public class SonicItems {
     public static final RegistryObject<Item> SONIC_SNIPER = ITEMS.register("sonic_sniper",
             () -> new SonicSniperItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SONIC_PISTOL = ITEMS.register("sonic_pistol",
-            () -> new Item(new Item.Properties()));
+            () -> new SonicPistolItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SONIC_AR = ITEMS.register("sonic_ar",
             () -> new Item(new Item.Properties()));
 

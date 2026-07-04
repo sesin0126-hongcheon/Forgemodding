@@ -139,6 +139,8 @@ Conflicting propagated mapping for com/sjgg/forgemodding/entity/SonicBulletEntit
 Conflicting propagated mapping for com/sjgg/forgemodding/entity/SonicBulletEntity/tick()V from net/minecraft/world/entity/projectile/Projectile/tick()V: tick -> m_8119_
 Conflicting propagated mapping for com/sjgg/forgemodding/entity/SonicBulletEntity/defineSynchedData()V from net/minecraft/world/entity/Entity/defineSynchedData()V: defineSynchedData -> m_8097_
 Conflicting propagated mapping for com/sjgg/forgemodding/entity/SonicBulletEntity/onHitBlock(Lnet/minecraft/world/phys/BlockHitResult;)V from net/minecraft/world/entity/projectile/Projectile/onHitBlock(Lnet/minecraft/world/phys/BlockHitResult;)V: onHitBlock -> m_8060_
+Conflicting propagated mapping for com/sjgg/forgemodding/item/custom/SonicPistolItem/appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V from net/minecraft/world/item/Item/appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V: appendHoverText -> m_7373_
+Conflicting propagated mapping for com/sjgg/forgemodding/item/custom/SonicPistolItem/use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder; from net/minecraft/world/item/Item/use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder;: use -> m_7203_
 Conflicting propagated mapping for net/minecraftforge/event/BuildCreativeModeTabContentsEvent/accept(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/CreativeModeTab$TabVisibility;)V from net/minecraft/world/item/CreativeModeTab$Output/accept(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/CreativeModeTab$TabVisibility;)V: accept -> m_246267_
 Conflicting propagated mapping for net/minecraft/world/entity/LivingEntity/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V from net/minecraft/world/entity/player/Player/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V: lambda$addAdditionalSaveData$3 -> m_219754_
 Adding extras
@@ -171,6 +173,7 @@ Writing Output: /Users/mikymikyeongjineongjin/Documents/modding/Forgemodding/bui
   com/sjgg/forgemodding/item/SonicCreativeModTabs.class
   com/sjgg/forgemodding/item/SonicItems.class
   com/sjgg/forgemodding/item/custom/
+  com/sjgg/forgemodding/item/custom/SonicPistolItem.class
   com/sjgg/forgemodding/item/custom/SonicSniperItem.class
   com/sjgg/forgemodding/networks/
   com/sjgg/forgemodding/networks/ModMessages.class
@@ -179,5 +182,6 @@ Writing Output: /Users/mikymikyeongjineongjin/Documents/modding/Forgemodding/bui
   data/forgemodding/
   data/forgemodding/recipes/
   data/forgemodding/recipes/sonic_ar.json
+  data/forgemodding/recipes/sonic_pistol.json
   data/forgemodding/recipes/sonic_sniper.json
   pack.mcmeta

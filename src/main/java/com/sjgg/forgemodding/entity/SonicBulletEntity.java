@@ -46,7 +46,19 @@ public class SonicBulletEntity extends Projectile {
         super.tick();
         if (this.spawnPos == null) this.spawnPos = this.position();
 
-        // 20틱(1초)이 지나면 100블록 지남 -> 소멸
+        // 현재 날아간 거리 계산
+        double distance = this.position().distanceTo(spawnPos);
+
+        // NBT 데이터로부터 이 탄환이 권총(Sonic Pistol)에서 발사되었는지 판단
+        boolean isPistol = this.getPersistentData().getBoolean("IsPistol");
+
+        // [권총 사거리 제한] 권총 탄환인데 15블록을 넘어가면 즉시 소멸
+        if (isPistol && distance > 15.0D) {
+            this.discard();
+            return;
+        }
+
+        // 20틱(1초)이 지나면 스나이퍼 탄환 등 기본 탄환 소멸
         if (this.tickCount > 20) {
             this.discard();
             return;
@@ -59,36 +71,52 @@ public class SonicBulletEntity extends Projectile {
         Vec3 movement = this.getDeltaMovement();
 
         // 1. [블록 충돌 감지 활성화]
-        // 탄환이 이동하는 궤적 내에 블록(벽)이 있는지 검사합니다.
         HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
         if (hitresult.getType() != HitResult.Type.MISS) {
-            // 무언가(블록 혹은 엔티티)에 부딪혔다면 onHit 호출 -> 여기서 블록이면 탄환이 소멸합니다.
             this.onHit(hitresult);
         }
 
-        // 2. 엔티티 감지 및 관통 대미지 처리 (엔티티끼리는 여전히 일직선상에서 관통됩니다)
+        // 2. 엔티티 감지 및 대미지 처리
         AABB searchBox = this.getBoundingBox().expandTowards(movement).inflate(1.0D);
         List<Entity> targets = this.level().getEntities(this, searchBox, this::canHitEntity);
 
         for (Entity target : targets) {
             if (!hitEntityIds.contains(target.getId()) && target instanceof LivingEntity livingTarget) {
                 if (isTargetFrequencyMatched(livingTarget)) {
-                    double distance = this.position().distanceTo(spawnPos);
 
-                    float baseDamage = 20.0F + (float) ((distance / 2.0D) * 2.0D);
-                    float finalDamage = baseDamage * this.damageMultiplier;
+                    if (isPistol) {
+                        // ---------------- [ Sonic Pistol 권총 로직 ] ----------------
+                        float finalDamage = 5.0F; // 고정 데미지 5
+                        livingTarget.hurt(this.damageSources().magic(), finalDamage);
 
-                    livingTarget.hurt(this.damageSources().magic(), finalDamage);
+                        // 맞았을 때 갑옷 내구도 감소 5
+                        for (EquipmentSlot slot : EquipmentSlot.values()) {
+                            if (slot.getType() == EquipmentSlot.Type.ARMOR) {
+                                ItemStack armor = livingTarget.getItemBySlot(slot);
+                                if (!armor.isEmpty()) {
+                                    armor.hurtAndBreak(5, livingTarget, (e) -> e.broadcastBreakEvent(slot));
+                                }
+                            }
+                        }
+                    } else {
+                        // ---------------- [ Sonic Sniper 스나이퍼 로직 ] ----------------
+                        // 거리가 2블록 멀어질 때마다 데미지가 5씩 정비례해서 정확하게 늘어나는 공식 (소수점 유실 방지)
+                        float baseDamage = 5.0F + (float) ((distance / 2.0D) * 5.0D);
+                        float finalDamage = baseDamage * this.damageMultiplier;
 
-                    // 갑옷 내구도 감소
-                    for (EquipmentSlot slot : EquipmentSlot.values()) {
-                        if (slot.getType() == EquipmentSlot.Type.ARMOR) {
-                            ItemStack armor = livingTarget.getItemBySlot(slot);
-                            if (!armor.isEmpty()) {
-                                armor.hurtAndBreak(50, livingTarget, (e) -> e.broadcastBreakEvent(slot));
+                        livingTarget.hurt(this.damageSources().magic(), finalDamage);
+
+                        // 맞았을 때 갑옷 내구도 감소 50
+                        for (EquipmentSlot slot : EquipmentSlot.values()) {
+                            if (slot.getType() == EquipmentSlot.Type.ARMOR) {
+                                ItemStack armor = livingTarget.getItemBySlot(slot);
+                                if (!armor.isEmpty()) {
+                                    armor.hurtAndBreak(50, livingTarget, (e) -> e.broadcastBreakEvent(slot));
+                                }
                             }
                         }
                     }
+
                     hitEntityIds.add(livingTarget.getId());
                 }
             }
@@ -97,12 +125,10 @@ public class SonicBulletEntity extends Projectile {
         this.setPos(this.getX() + movement.x, this.getY() + movement.y, this.getZ() + movement.z);
     }
 
-    // 엔티티 충돌 시 처리 (이미 위에서 전반적인 관통 데미지를 계산하므로 여기서는 비워둡니다)
     @Override
     protected void onHitEntity(EntityHitResult result) {}
 
-    // 3. [블록 충돌 시 소멸 로직 추가]
-    // 탄환이 날아가다가 벽이나 바닥(블록)에 부딪히면 실행
+    // 3. [블록 충돌 시 소멸 로직] 벽을 만나면 뚫지 못하고 사라짐
     @Override
     protected void onHitBlock(BlockHitResult result) {
         super.onHitBlock(result);
