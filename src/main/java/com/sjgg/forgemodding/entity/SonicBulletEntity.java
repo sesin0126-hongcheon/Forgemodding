@@ -46,7 +46,7 @@ public class SonicBulletEntity extends Projectile {
         super.tick();
         if (this.spawnPos == null) this.spawnPos = this.position();
 
-        // 20틱(1초)이 지나면 사정거리 100블록 소멸
+        // 20틱(1초)이 지나면 100블록 지남 -> 소멸
         if (this.tickCount > 20) {
             this.discard();
             return;
@@ -85,7 +85,7 @@ public class SonicBulletEntity extends Projectile {
                         if (slot.getType() == EquipmentSlot.Type.ARMOR) {
                             ItemStack armor = livingTarget.getItemBySlot(slot);
                             if (!armor.isEmpty()) {
-                                armor.hurtAndBreak(30, livingTarget, (e) -> e.broadcastBreakEvent(slot));
+                                armor.hurtAndBreak(50, livingTarget, (e) -> e.broadcastBreakEvent(slot));
                             }
                         }
                     }

@@ -50,13 +50,12 @@ public class SonicSniperItem extends Item {
             // 전체 시간(72000)에서 남은 시간(count)을 빼서 현재 몇 틱 동안 모았는지 계산
             int chargeTicks = this.getUseDuration(stack) - count;
 
-            // 틱 단위를 초 단위로 변환 (예: 25틱 -> 1.2초)
-            float chargeSeconds = chargeTicks / 20.0F;
+            // 틱 단위를 초 단위로 변환 + 소숫점 아래 한자리 수까지 반올림
+            float chargeSecondsRaw = chargeTicks / 20.0F;
+            float chargeSeconds = Math.round(chargeSecondsRaw * 10.0F) / 10.0F;
 
-            // 시각적인 진행도 바(Progress Bar) 만들기 (최대 3초 = 60틱 기준)
-            // 3초를 채우면 꽉 찬 게이지가 보입니다.
             int maxBarLength = 10;
-            int filledLength = Math.min(maxBarLength, (chargeTicks * maxBarLength) / 60);
+            int filledLength = Math.min(maxBarLength, (chargeTicks * maxBarLength) / 100);
 
             StringBuilder progressBar = new StringBuilder();
             for (int i = 0; i < maxBarLength; i++) {
@@ -67,17 +66,23 @@ public class SonicSniperItem extends Item {
                 }
             }
 
-            // UI 색상 동적 변경 (1초 미만은 빨간색, 1~3초는 노란색, 3초 완료는 하늘색)
-            String colorCode = "§c"; // 기본 빨강
-            if (chargeTicks >= 60) {
-                colorCode = "§b[MAX] "; // 3초 완충시 하늘색
+            // UI 색상 동적 변경 (1초 미만 빨강, 1~5초 노랑, 5초 완충 하늘색)
+            String colorCode = "§c";
+            if (chargeTicks >= 100) {
+                colorCode = "§b[MAX] "; // 5초 완료 시 MAX 표시 및 하늘색
             } else if (chargeTicks >= 20) {
-                colorCode = "§e"; // 1초 이상은 노란색
+                colorCode = "§e"; // 1초 이상 발사 가능 진입 시 노란색
             }
 
-            // 플레이어 화면 핫바 위(액션바)에 실시간으로 표시 (매 틱마다 갱신됨)
+            if (chargeSeconds > 5.0F) {
+                chargeSeconds = 5.0F;
+            }
+
+            String formattedTime = String.format(java.util.Locale.US, "%.1f", chargeSeconds);
+
+            // 플레이어 화면 핫바 위(액션바)에 실시간으로 표시 (매 틱마다 갱신)
             player.displayClientMessage(
-                    Component.literal("충전 중: " + colorCode + progressBar.toString() + " (" + String.format("%.1f", chargeSeconds) + "초)"),
+                    Component.literal("충전 중: " + colorCode + progressBar.toString() + " (" + formattedTime + "초)"),
                     true
             );
         }
@@ -90,7 +95,7 @@ public class SonicSniperItem extends Item {
 
             // 최소 1초 충전 조건 확인
             if (chargeTicks < 20) {
-                player.displayClientMessage(Component.literal("§c충전 시간이 부족합니다! (최소 1초 충전 필요)"), true);
+                player.displayClientMessage(Component.literal("§c충전 시간 부족! (최소 1초 충전)"), true);
                 return;
             }
 
@@ -101,9 +106,9 @@ public class SonicSniperItem extends Item {
                 // 충전 배율 계산
                 float chargeMultiplier = chargeTicks / 20.0F;
 
-                // 최대 충전 시간 3초 제한 적용
-                if (chargeMultiplier > 3.0F) {
-                    chargeMultiplier = 3.0F;
+                // 최대 충전 시간 5초 제한 적용
+                if (chargeMultiplier > 5.0F) {
+                    chargeMultiplier = 5.0F;
                 }
 
                 // 탄환 생성 및 발사
@@ -136,8 +141,8 @@ public class SonicSniperItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("현재 주파수: §b" + getFrequency(stack) + " Hz"));
-        tooltip.add(Component.literal("§e우클릭을 1초~3초 동안 눌러 충전 후 발사하세요. (최대 3배)"));
+        tooltip.add(Component.literal("주파수: §b" + getFrequency(stack) + " Hz"));
+        tooltip.add(Component.literal("§e1초~5초 이상 충전 후 발사. (충전시간 비례 데미지 증가)"));
         super.appendHoverText(stack, level, tooltip, flag);
     }
 }
