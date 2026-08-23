@@ -14,7 +14,7 @@ public class ModMessages {
 
     public static void register() {
         SimpleChannel net = NetworkRegistry.ChannelBuilder
-                .named(new ResourceLocation(Forgemodding.MODID, "messages"))
+                .named(ResourceLocation.fromNamespaceAndPath(Forgemodding.MODID, "messages"))
                 .networkProtocolVersion(() -> "1.0")
                 .clientAcceptedVersions(s -> true)
                 .serverAcceptedVersions(s -> true)
@@ -26,6 +26,11 @@ public class ModMessages {
                 .encoder(PacketUpdateFrequency::toBytes)
                 .decoder(PacketUpdateFrequency::new)
                 .consumerMainThread(PacketUpdateFrequency::handle)
+                .add();
+        net.messageBuilder(PacketARShoot.class, id())
+                .encoder(PacketARShoot::toBytes)
+                .decoder(PacketARShoot::new)
+                .consumerMainThread(PacketARShoot::handle)
                 .add();
     }
 

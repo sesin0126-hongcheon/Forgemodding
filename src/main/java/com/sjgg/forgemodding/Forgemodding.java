@@ -41,7 +41,7 @@ public class Forgemodding {
     }
 
     // ------------------------------------------------------------------------
-
+    @SuppressWarnings("removal")
     private void commonSetup(final FMLCommonSetupEvent event) {
 
     }

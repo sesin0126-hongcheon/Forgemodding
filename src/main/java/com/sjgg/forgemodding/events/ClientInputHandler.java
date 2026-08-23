@@ -109,4 +109,33 @@ public class ClientInputHandler {
             lockedNumericKeyCode = -1;
         }
     }
+    // [3] AR 좌클릭 연사 감지
+    @SubscribeEvent
+    public static void onClientTick(net.minecraftforge.event.TickEvent.ClientTickEvent event) {
+        if (event.phase != net.minecraftforge.event.TickEvent.Phase.END) return;
+
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.player == null || mc.screen != null) return;
+
+        ItemStack stack = mc.player.getMainHandItem();
+        if (stack.getItem() instanceof com.sjgg.forgemodding.item.custom.SonicARItem) {
+            // 마우스 좌클릭을 누르고 있고, 열(Heat)이 1 이상일 때만 패킷 전송
+            if (mc.options.keyAttack.isDown()) {
+                if (com.sjgg.forgemodding.item.custom.SonicARItem.getHeat(stack) > 0) {
+                    com.sjgg.forgemodding.networks.ModMessages.sendToServer(new com.sjgg.forgemodding.networks.PacketARShoot());
+                }
+            }
+        }
+    }
+
+    // [4] AR을 들고 있을 때 기본 좌클릭 기능(블록 파괴 등) 캔슬
+    @SubscribeEvent
+    public static void onKeyMappingTriggered(InputEvent.InteractionKeyMappingTriggered event) {
+        Minecraft mc = Minecraft.getInstance();
+        if (event.isAttack() && mc.player != null) {
+            if (mc.player.getMainHandItem().getItem() instanceof com.sjgg.forgemodding.item.custom.SonicARItem) {
+                event.setCanceled(true); // 허공에 팔을 헛스윙하거나 주변 블록을 캐는 동작을 무력화시킵니다.
+            }
+        }
+    }
 }
