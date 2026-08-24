@@ -15,7 +15,7 @@ public class ClientModEvents {
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         // 우리의 소닉 탄환 엔티티(SonicBulletEntity)에 '형태가 없는 빈 렌더러(NoopRenderer)'를 매핑합니다.
-        // 이렇게 하면 크래시가 나지 않고, 우리가 구현한 파란색 소닉붐 파티클만 멋지게 일직선으로 보입니다.
+        // 이렇게 하면 크래시가 나지 않고, 우리가 구현한 파란색 소닉붐 파티클만 일직선으로 보입니다.
         event.registerEntityRenderer(ModEntities.SONIC_BULLET.get(), NoopRenderer::new);
     }
 }

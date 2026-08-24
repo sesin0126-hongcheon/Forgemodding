@@ -1,6 +1,8 @@
 package com.sjgg.forgemodding.item.custom;
 
 import com.sjgg.forgemodding.entity.SonicBulletEntity;
+import com.sjgg.forgemodding.item.client.SonicSniperRenderer;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -13,15 +15,54 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.animatable.GeoItem;
+import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
+import java.util.function.Consumer;
 
-public class SonicSniperItem extends Item {
+public class SonicSniperItem extends Item implements GeoItem {
+    // GeckoLib 애니메이션 캐시 추가
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+
     public SonicSniperItem(Properties pProperties) {
         super(pProperties);
+        // 멀티플레이 애니메이션 동기화 등록
+        SingletonGeoAnimatable.registerSyncedAnimatable(this);
     }
 
+    // ---------------- [ GeckoLib 구현 필수 메서드 ] ----------------
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        // 추후 발사/재장전/대기 3D 애니메이션을 제어할 때 여기에 컨트롤러를 등록합니다.
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
+    }
+
+    @Override
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+        consumer.accept(new IClientItemExtensions() {
+            private SonicSniperRenderer renderer;
+
+            @Override
+            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+                if (this.renderer == null) {
+                    this.renderer = new SonicSniperRenderer();
+                }
+                return this.renderer;
+            }
+        });
+    }
+
+    // ---------------- [ 기존 총기 기능 로직 ] ----------------
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
         return UseAnim.BOW;
@@ -47,10 +88,8 @@ public class SonicSniperItem extends Item {
     @Override
     public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int count) {
         if (livingEntity instanceof Player player) {
-            // 전체 시간(72000)에서 남은 시간(count)을 빼서 현재 몇 틱 동안 모았는지 계산
             int chargeTicks = this.getUseDuration(stack) - count;
 
-            // 틱 단위를 초 단위로 변환 + 소숫점 아래 한자리 수까지 반올림
             float chargeSecondsRaw = chargeTicks / 20.0F;
             float chargeSeconds = Math.round(chargeSecondsRaw * 10.0F) / 10.0F;
 
@@ -60,18 +99,17 @@ public class SonicSniperItem extends Item {
             StringBuilder progressBar = new StringBuilder();
             for (int i = 0; i < maxBarLength; i++) {
                 if (i < filledLength) {
-                    progressBar.append("■"); // 충전된 칸
+                    progressBar.append("■");
                 } else {
-                    progressBar.append("□"); // 남은 칸
+                    progressBar.append("□");
                 }
             }
 
-            // UI 색상 동적 변경 (1초 미만 빨강, 1~5초 노랑, 5초 완충 하늘색)
             String colorCode = "§c";
             if (chargeTicks >= 100) {
-                colorCode = "§b[MAX] "; // 5초 완료 시 MAX 표시 및 하늘색
+                colorCode = "§b[MAX] ";
             } else if (chargeTicks >= 20) {
-                colorCode = "§e"; // 1초 이상 발사 가능 진입 시 노란색
+                colorCode = "§e";
             }
 
             if (chargeSeconds > 5.0F) {
@@ -80,7 +118,6 @@ public class SonicSniperItem extends Item {
 
             String formattedTime = String.format(java.util.Locale.US, "%.1f", chargeSeconds);
 
-            // 플레이어 화면 핫바 위(액션바)에 실시간으로 표시 (매 틱마다 갱신)
             player.displayClientMessage(
                     Component.literal("충전 중: " + colorCode + progressBar.toString() + " (" + formattedTime + "초)"),
                     true
@@ -93,25 +130,21 @@ public class SonicSniperItem extends Item {
         if (entityLiving instanceof Player player) {
             int chargeTicks = this.getUseDuration(stack) - timeLeft;
 
-            // 최소 1초 충전 조건 확인
             if (chargeTicks < 20) {
                 player.displayClientMessage(Component.literal("§c충전 시간 부족! (최소 1초 충전)"), true);
                 return;
             }
 
             if (!level.isClientSide) {
-                player.getCooldowns().addCooldown(this, 20); // 쿨타임 1초
+                player.getCooldowns().addCooldown(this, 20);
                 int currentFreq = getFrequency(stack);
 
-                // 충전 배율 계산
                 float chargeMultiplier = chargeTicks / 20.0F;
 
-                // 최대 충전 시간 5초 제한 적용
                 if (chargeMultiplier > 5.0F) {
                     chargeMultiplier = 5.0F;
                 }
 
-                // 탄환 생성 및 발사
                 SonicBulletEntity bullet = new SonicBulletEntity(level, player, currentFreq, chargeMultiplier);
                 bullet.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 5.0F, 0.0F);
                 level.addFreshEntity(bullet);
