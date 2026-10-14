@@ -2,8 +2,10 @@ package com.sjgg.forgemodding;
 
 import com.mojang.logging.LogUtils;
 import com.sjgg.forgemodding.entity.ModEntities;
+import com.sjgg.forgemodding.init.ModEntityTypes;
 import com.sjgg.forgemodding.item.SonicCreativeModTabs;
 import com.sjgg.forgemodding.item.SonicItems;
+import com.sjgg.forgemodding.item.custom.SonicGrenadeItem;
 import com.sjgg.forgemodding.networks.ModMessages;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.common.MinecraftForge;
@@ -37,6 +39,8 @@ public class Forgemodding {
 
         ModEntities.register(modEventBus);
 
+        ModEntityTypes.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -49,12 +53,12 @@ public class Forgemodding {
 
     }
 
-    // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(SonicItems.SONIC_SNIPER);
             event.accept(SonicItems.SONIC_PISTOL);
             event.accept(SonicItems.SONIC_AR);
+            event.accept(SonicItems.SONIC_GRENADE);
         }
     }
 }

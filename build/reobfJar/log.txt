@@ -134,6 +134,11 @@ Conflicting propagated mapping for com/sjgg/forgemodding/entity/SonicBulletEntit
 Conflicting propagated mapping for com/sjgg/forgemodding/entity/SonicBulletEntity/tick()V from net/minecraft/world/entity/projectile/Projectile/tick()V: tick -> m_8119_
 Conflicting propagated mapping for com/sjgg/forgemodding/entity/SonicBulletEntity/defineSynchedData()V from net/minecraft/world/entity/Entity/defineSynchedData()V: defineSynchedData -> m_8097_
 Conflicting propagated mapping for com/sjgg/forgemodding/entity/SonicBulletEntity/onHitBlock(Lnet/minecraft/world/phys/BlockHitResult;)V from net/minecraft/world/entity/projectile/Projectile/onHitBlock(Lnet/minecraft/world/phys/BlockHitResult;)V: onHitBlock -> m_8060_
+Conflicting propagated mapping for com/sjgg/forgemodding/entity/SonicGrenadeEntity/tick()V from net/minecraft/world/entity/projectile/ThrowableProjectile/tick()V: tick -> m_8119_
+Conflicting propagated mapping for com/sjgg/forgemodding/entity/SonicGrenadeEntity/getDefaultItem()Lnet/minecraft/world/item/Item; from net/minecraft/world/entity/projectile/ThrowableItemProjectile/getDefaultItem()Lnet/minecraft/world/item/Item;: getDefaultItem -> m_7881_
+Conflicting propagated mapping for com/sjgg/forgemodding/entity/SonicGrenadeEntity/onHitBlock(Lnet/minecraft/world/phys/BlockHitResult;)V from net/minecraft/world/entity/projectile/Projectile/onHitBlock(Lnet/minecraft/world/phys/BlockHitResult;)V: onHitBlock -> m_8060_
+Conflicting propagated mapping for com/sjgg/forgemodding/entity/SonicGrenadeEntity/canHitEntity(Lnet/minecraft/world/entity/Entity;)Z from net/minecraft/world/entity/projectile/Projectile/canHitEntity(Lnet/minecraft/world/entity/Entity;)Z: canHitEntity -> m_5603_
+Conflicting propagated mapping for com/sjgg/forgemodding/item/custom/SonicGrenadeItem/use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder; from net/minecraft/world/item/Item/use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder;: use -> m_7203_
 Conflicting propagated mapping for com/sjgg/forgemodding/item/custom/SonicARItem/appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V from net/minecraft/world/item/Item/appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V: appendHoverText -> m_7373_
 Conflicting propagated mapping for com/sjgg/forgemodding/item/custom/SonicARItem/getUseAnimation(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/item/UseAnim; from net/minecraft/world/item/Item/getUseAnimation(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/item/UseAnim;: getUseAnimation -> m_6164_
 Conflicting propagated mapping for com/sjgg/forgemodding/item/custom/SonicARItem/use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder; from net/minecraft/world/item/Item/use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder;: use -> m_7203_
@@ -147,8 +152,8 @@ Conflicting propagated mapping for com/sjgg/forgemodding/item/custom/SonicSniper
 Conflicting propagated mapping for com/sjgg/forgemodding/item/custom/SonicSniperItem/onUseTick(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;I)V from net/minecraft/world/item/Item/onUseTick(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;I)V: onUseTick -> m_5929_
 Conflicting propagated mapping for com/sjgg/forgemodding/item/custom/SonicSniperItem/releaseUsing(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;I)V from net/minecraft/world/item/Item/releaseUsing(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;I)V: releaseUsing -> m_5551_
 Conflicting propagated mapping for software/bernie/geckolib/renderer/GeoItemRenderer/renderByItem(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V from net/minecraft/client/renderer/BlockEntityWithoutLevelRenderer/renderByItem(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V: renderByItem -> m_108829_
-Conflicting propagated mapping for net/minecraftforge/event/BuildCreativeModeTabContentsEvent/accept(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/CreativeModeTab$TabVisibility;)V from net/minecraft/world/item/CreativeModeTab$Output/accept(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/CreativeModeTab$TabVisibility;)V: accept -> m_246267_
 Conflicting propagated mapping for net/minecraft/world/entity/LivingEntity/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V from net/minecraft/world/entity/player/Player/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V: lambda$addAdditionalSaveData$3 -> m_219754_
+Conflicting propagated mapping for net/minecraftforge/event/BuildCreativeModeTabContentsEvent/accept(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/CreativeModeTab$TabVisibility;)V from net/minecraft/world/item/CreativeModeTab$Output/accept(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/CreativeModeTab$TabVisibility;)V: accept -> m_246267_
 Adding extras
 Sorting
 Writing Output: /Users/mikymikyeongjineongjin/Documents/modding/Forgemodding/build/reobfJar/output.jar
@@ -159,6 +164,7 @@ Writing Output: /Users/mikymikyeongjineongjin/Documents/modding/Forgemodding/bui
   assets/forgemodding/
   assets/forgemodding/geo/
   assets/forgemodding/geo/sonic_ar.geo.json
+  assets/forgemodding/geo/sonic_grenade.geo.json
   assets/forgemodding/geo/sonic_pistol.geo.json
   assets/forgemodding/geo/sonic_sniper.geo.json
   assets/forgemodding/lang/
@@ -166,11 +172,13 @@ Writing Output: /Users/mikymikyeongjineongjin/Documents/modding/Forgemodding/bui
   assets/forgemodding/models/
   assets/forgemodding/models/item/
   assets/forgemodding/models/item/sonic_ar.json
+  assets/forgemodding/models/item/sonic_grenade.json
   assets/forgemodding/models/item/sonic_pistol.json
   assets/forgemodding/models/item/sonic_sniper.json
   assets/forgemodding/textures/
   assets/forgemodding/textures/item/
   assets/forgemodding/textures/item/sonic_ar.png
+  assets/forgemodding/textures/item/sonic_grenade.png
   assets/forgemodding/textures/item/sonic_pistol.png
   assets/forgemodding/textures/item/sonic_sniper.png
   com/
@@ -181,15 +189,20 @@ Writing Output: /Users/mikymikyeongjineongjin/Documents/modding/Forgemodding/bui
   com/sjgg/forgemodding/entity/
   com/sjgg/forgemodding/entity/ModEntities.class
   com/sjgg/forgemodding/entity/SonicBulletEntity.class
+  com/sjgg/forgemodding/entity/SonicGrenadeEntity.class
   com/sjgg/forgemodding/events/
   com/sjgg/forgemodding/events/ClientInputHandler.class
   com/sjgg/forgemodding/events/ClientModEvents.class
+  com/sjgg/forgemodding/init/
+  com/sjgg/forgemodding/init/ModEntityTypes.class
   com/sjgg/forgemodding/item/
   com/sjgg/forgemodding/item/SonicCreativeModTabs.class
   com/sjgg/forgemodding/item/SonicItems.class
   com/sjgg/forgemodding/item/client/
   com/sjgg/forgemodding/item/client/SonicARModel.class
   com/sjgg/forgemodding/item/client/SonicARRenderer.class
+  com/sjgg/forgemodding/item/client/SonicGrenadeModel.class
+  com/sjgg/forgemodding/item/client/SonicGrenadeRenderer.class
   com/sjgg/forgemodding/item/client/SonicPistolModel.class
   com/sjgg/forgemodding/item/client/SonicPistolRenderer.class
   com/sjgg/forgemodding/item/client/SonicSniperModel.class
@@ -197,6 +210,8 @@ Writing Output: /Users/mikymikyeongjineongjin/Documents/modding/Forgemodding/bui
   com/sjgg/forgemodding/item/custom/
   com/sjgg/forgemodding/item/custom/SonicARItem$1.class
   com/sjgg/forgemodding/item/custom/SonicARItem.class
+  com/sjgg/forgemodding/item/custom/SonicGrenadeItem$1.class
+  com/sjgg/forgemodding/item/custom/SonicGrenadeItem.class
   com/sjgg/forgemodding/item/custom/SonicPistolItem$1.class
   com/sjgg/forgemodding/item/custom/SonicPistolItem.class
   com/sjgg/forgemodding/item/custom/SonicSniperItem$1.class

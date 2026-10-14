@@ -2,6 +2,7 @@ package com.sjgg.forgemodding.item;
 
 import com.sjgg.forgemodding.Forgemodding;
 import com.sjgg.forgemodding.item.custom.SonicARItem;
+import com.sjgg.forgemodding.item.custom.SonicGrenadeItem;
 import com.sjgg.forgemodding.item.custom.SonicPistolItem;
 import com.sjgg.forgemodding.item.custom.SonicSniperItem;
 import net.minecraft.world.item.Item;
@@ -20,6 +21,8 @@ public class SonicItems {
             () -> new SonicPistolItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SONIC_AR = ITEMS.register("sonic_ar",
             () -> new SonicARItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SONIC_GRENADE = ITEMS.register("sonic_grenade",
+            () -> new SonicGrenadeItem(new Item.Properties().stacksTo(16))); // 최대 16개 묶음
 
 
     public static void register(IEventBus eventBus) {

@@ -20,6 +20,7 @@ public class SonicCreativeModTabs {
                         pOutput.accept(SonicItems.SONIC_SNIPER.get());
                         pOutput.accept(SonicItems.SONIC_PISTOL.get());
                         pOutput.accept(SonicItems.SONIC_AR.get());
+                        pOutput.accept(SonicItems.SONIC_GRENADE.get());
                     })
                     .build());
 
