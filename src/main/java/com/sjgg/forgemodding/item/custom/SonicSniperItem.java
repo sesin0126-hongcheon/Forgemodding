@@ -1,9 +1,11 @@
 package com.sjgg.forgemodding.item.custom;
 
 import com.sjgg.forgemodding.entity.SonicBulletEntity;
+import com.sjgg.forgemodding.events.CameraRecoilHandler;
 import com.sjgg.forgemodding.item.client.SonicSniperRenderer;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -21,6 +23,9 @@ import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
@@ -39,7 +44,9 @@ public class SonicSniperItem extends Item implements GeoItem {
     // ---------------- [ GeckoLib 구현 필수 메서드 ] ----------------
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        // 추후 발사/재장전/대기 3D 애니메이션을 제어할 때 여기에 컨트롤러를 등록합니다.
+        // 반동 애니메이션 트리거 컨트롤러 등록
+        controllers.add(new AnimationController<>(this, "recoilController", 0, event -> PlayState.CONTINUE)
+                .triggerableAnim("recoil", RawAnimation.begin().thenPlay("recoil")));
     }
 
     @Override
@@ -140,7 +147,6 @@ public class SonicSniperItem extends Item implements GeoItem {
                 int currentFreq = getFrequency(stack);
 
                 float chargeMultiplier = chargeTicks / 20.0F;
-
                 if (chargeMultiplier > 5.0F) {
                     chargeMultiplier = 5.0F;
                 }
@@ -151,10 +157,17 @@ public class SonicSniperItem extends Item implements GeoItem {
 
                 level.playSound(null, player.getX(), player.getY(), player.getZ(),
                         SoundEvents.WARDEN_SONIC_BOOM, SoundSource.PLAYERS, 3.0F, 1.0F);
+
+                // 서버 측 GeckoLib 3D 모델 반동 트리거
+                triggerAnim(player, GeoItem.getOrAssignId(stack, (ServerLevel) level), "recoilController", "recoil");
+            } else {
+                // [수정 완료] 클라이언트 측 15도 부드러운 카메라 반동 적용
+                CameraRecoilHandler.addRecoil(15.0F);
             }
         }
     }
 
+    // ---------------- [ 주파수 관련 로직 ] ----------------
     public static int getFrequency(ItemStack stack) {
         if (stack.hasTag() && stack.getTag().contains("Frequency")) {
             return stack.getTag().getInt("Frequency");

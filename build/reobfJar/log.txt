@@ -151,8 +151,8 @@ Conflicting propagated mapping for com/sjgg/forgemodding/item/custom/SonicSniper
 Conflicting propagated mapping for com/sjgg/forgemodding/item/custom/SonicSniperItem/getUseDuration(Lnet/minecraft/world/item/ItemStack;)I from net/minecraft/world/item/Item/getUseDuration(Lnet/minecraft/world/item/ItemStack;)I: getUseDuration -> m_8105_
 Conflicting propagated mapping for com/sjgg/forgemodding/item/custom/SonicSniperItem/onUseTick(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;I)V from net/minecraft/world/item/Item/onUseTick(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;I)V: onUseTick -> m_5929_
 Conflicting propagated mapping for com/sjgg/forgemodding/item/custom/SonicSniperItem/releaseUsing(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;I)V from net/minecraft/world/item/Item/releaseUsing(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;I)V: releaseUsing -> m_5551_
-Conflicting propagated mapping for software/bernie/geckolib/renderer/GeoItemRenderer/renderByItem(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V from net/minecraft/client/renderer/BlockEntityWithoutLevelRenderer/renderByItem(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V: renderByItem -> m_108829_
 Conflicting propagated mapping for net/minecraft/world/entity/LivingEntity/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V from net/minecraft/world/entity/player/Player/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V: lambda$addAdditionalSaveData$3 -> m_219754_
+Conflicting propagated mapping for software/bernie/geckolib/renderer/GeoItemRenderer/renderByItem(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V from net/minecraft/client/renderer/BlockEntityWithoutLevelRenderer/renderByItem(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V: renderByItem -> m_108829_
 Conflicting propagated mapping for net/minecraftforge/event/BuildCreativeModeTabContentsEvent/accept(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/CreativeModeTab$TabVisibility;)V from net/minecraft/world/item/CreativeModeTab$Output/accept(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/CreativeModeTab$TabVisibility;)V: accept -> m_246267_
 Adding extras
 Sorting
@@ -162,6 +162,8 @@ Writing Output: /Users/mikymikyeongjineongjin/Documents/modding/Forgemodding/bui
   META-INF/mods.toml
   assets/
   assets/forgemodding/
+  assets/forgemodding/animations/
+  assets/forgemodding/animations/sonic_sniper.animation.json
   assets/forgemodding/geo/
   assets/forgemodding/geo/sonic_ar.geo.json
   assets/forgemodding/geo/sonic_grenade.geo.json
@@ -191,6 +193,7 @@ Writing Output: /Users/mikymikyeongjineongjin/Documents/modding/Forgemodding/bui
   com/sjgg/forgemodding/entity/SonicBulletEntity.class
   com/sjgg/forgemodding/entity/SonicGrenadeEntity.class
   com/sjgg/forgemodding/events/
+  com/sjgg/forgemodding/events/CameraRecoilHandler.class
   com/sjgg/forgemodding/events/ClientInputHandler.class
   com/sjgg/forgemodding/events/ClientModEvents.class
   com/sjgg/forgemodding/init/
